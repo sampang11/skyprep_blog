@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Posts</h1>
+<div style="text-align: right;">
+  <%= link_to "New post", new_post_path, class: "btn btn-primary" %>
+</div>
+
+<div id="posts" class="row">
+  <% @posts.each do |post| %>
+  <div class="col" style="padding-top: 30px" data-url="<%= post_path(post) %>">
+    <%= render post %>
+  </div>
+  <% end %>
+</div>
+
