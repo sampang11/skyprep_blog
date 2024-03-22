@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :posts
+  resources :posts do
+    collection do
+      get 'logout' # Define custom action route for a specific member
+    end
+  end
   devise_for :users
   root 'posts#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
