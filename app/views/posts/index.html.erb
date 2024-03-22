@@ -5,6 +5,24 @@
   <%= link_to "New post", new_post_path, class: "btn btn-primary" %>
 </div>
 
+<div class="row">
+  <%= form_with(url: posts_path, method: :get, class: "filter-form", "data-controller": "filter") do |form| %>
+    <div class="col-md-3">
+      <%= form.label :start_date, "Start Date" %>
+      <%= form.date_field :start_date, id: "startDate", class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      <%= form.label :end_date, "End Date" %>
+      <%= form.date_field :end_date, id: "endDate", class: "form-control" %>
+    </div>
+    <br/>
+    <div class="col">
+      <%= form.submit "Filter", class: "btn btn-primary" %>
+      <%= form.submit "clear", class: "btn btn-info" %>
+    </div>
+  <% end %>
+</div>
+
 <div id="posts" class="row">
   <% @posts.each do |post| %>
   <div class="col" style="padding-top: 30px" data-url="<%= post_path(post) %>">

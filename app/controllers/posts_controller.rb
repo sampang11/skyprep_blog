@@ -5,6 +5,11 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.all
+    @posts = @posts.where(created_at: params[:start_date]..params[:end_date]) if params[:start_date].present? && params[:end_date].present?
+    respond_to do |format|
+      format.html # Render HTML normally
+      format.turbo_stream # Render Turbo Stream for partial updates
+    end
   end
 
   # GET /posts/1 or /posts/1.json
