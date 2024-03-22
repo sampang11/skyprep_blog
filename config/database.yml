@@ -80,5 +80,4 @@ test:
 production:
   <<: *default
   database: skyprep_blog_production
-  username: skyprep_blog
-  password: <%= ENV["SKYPREP_BLOG_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
